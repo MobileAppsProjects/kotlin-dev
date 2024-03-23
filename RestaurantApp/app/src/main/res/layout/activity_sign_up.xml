@@ -85,7 +85,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
 
-        android:layout_marginStart="8dp"
+
         android:background="@color/orange"
         android:gravity="center_vertical|center_horizontal"
         android:text="Registrarse"
