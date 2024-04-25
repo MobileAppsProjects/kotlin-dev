@@ -26,6 +26,7 @@
             android:layout_height="wrap_content"
             android:ellipsize="start"
             android:hint="Ingresa tu correo electrónico"
+            android:textColorHint="@color/black"
             android:inputType="textEmailAddress"
             android:textAppearance="@style/TextAppearance.AppCompat.Display3" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -51,6 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Ingresa tu contraseña"
+            android:textColorHint="@color/black"
             android:inputType="textPassword"/>
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -75,7 +77,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="No tienes cuenta?  Registrate"
-        android:textColor="@color/black"
+        android:textColor="@color/blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
