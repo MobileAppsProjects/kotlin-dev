@@ -3,9 +3,8 @@ package com.example.restaurantapp.models
 import android.os.Parcel
 import android.os.Parcelable
 
-
-data class RestaurantModel (val name: String?, val address: String?, val deliverable_charges: String?, val image: String?,
-    val hours: Hours?, var menus: List<Menus?>?) : Parcelable {
+data class RestaurantModel(val name: String?, val address: String?, val delivery_charge: String?,
+                           val image: String?, val hours: Hours?, var menus: List<Menus?>?) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString(),
         parcel.readString(),
@@ -19,7 +18,7 @@ data class RestaurantModel (val name: String?, val address: String?, val deliver
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(name)
         parcel.writeString(address)
-        parcel.writeString(deliverable_charges)
+        parcel.writeString(delivery_charge)
         parcel.writeString(image)
         parcel.writeParcelable(hours, flags)
         parcel.writeTypedList(menus)
@@ -40,8 +39,8 @@ data class RestaurantModel (val name: String?, val address: String?, val deliver
     }
 }
 
-data class Hours(val Sunday: String?, val Monday: String?, val Tuesday: String?, val Wednesday: String?, val Thursday: String?,
-    val Friday: String?, val Saturday: String?) : Parcelable {
+data class Hours(val Sunday: String?, val Monday: String?, val Tuesday: String?, val Wednesday: String?,
+                 val Thursday: String?, val Friday: String?, val Saturday: String?) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString(),
         parcel.readString(),
@@ -78,11 +77,14 @@ data class Hours(val Sunday: String?, val Monday: String?, val Tuesday: String?,
     }
 }
 
-data class Menus(val name: String?, val price: Float, val url: String?) : Parcelable {
+
+data class Menus(val name: String?, val price: Float,  val url: String?, var totalInCart: Int) :
+    Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString(),
         parcel.readFloat(),
-        parcel.readString()
+        parcel.readString(),
+        parcel.readInt()
     ) {
     }
 
@@ -90,6 +92,7 @@ data class Menus(val name: String?, val price: Float, val url: String?) : Parcel
         parcel.writeString(name)
         parcel.writeFloat(price)
         parcel.writeString(url)
+        parcel.writeInt(totalInCart)
     }
 
     override fun describeContents(): Int {
