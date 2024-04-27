@@ -39,6 +39,10 @@ class RestaurantMenuActivity : AppCompatActivity(), MenuListAdapter.MenuListClic
 
         menuList = restaurantModel?.menus
 
+        // CoroutineScope utiliza para iniciar una nueva corrutina en el contexto principal (main)
+        // del hilo de la interfaz de usuario (UI).
+        // La función lambda pasada al método se ejecuta de forma asincrónica, pero en el hilo principal,
+        // lo que significa que puede interactuar con la interfaz de usuario sin causar bloqueos o problemas de concurrencia.
         CoroutineScope(Dispatchers.Main).launch {
             initRecyclerView(menuList)
             binding.checkoutButton.setOnClickListener {
