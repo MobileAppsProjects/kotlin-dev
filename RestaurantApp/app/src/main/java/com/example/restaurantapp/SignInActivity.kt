@@ -32,9 +32,9 @@ class SignInActivity : AppCompatActivity() {
 
                 firebaseAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener {
                     if (it.isSuccessful) {
-                        PreferenceManager.setLoggedIn(this,true)
                         val intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)
+                        PreferenceManager.setLoggedIn(this,true)
                     } else {
                         Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
 
