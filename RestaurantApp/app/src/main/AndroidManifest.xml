@@ -36,22 +36,26 @@
         <!-- SplashActivity -->
         <activity
             android:name=".SplashActivity"
+            android:screenOrientation="portrait"
             android:exported="true" />
 
         <!-- MainActivity -->
         <activity
             android:name=".MainActivity"
             android:exported="true"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.Moviles" />
 
         <!-- SuccessOrderActivity -->
         <activity
             android:name=".SuccessOrderActivity"
+            android:screenOrientation="portrait"
             android:exported="true" />
 
         <!-- RestaurantMenuActivity -->
         <activity
             android:name=".RestaurantMenuActivity"
+            android:screenOrientation="portrait"
             android:exported="true" />
     </application>
 </manifest>
