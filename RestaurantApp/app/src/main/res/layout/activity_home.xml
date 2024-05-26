@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- Sección de promoción -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/cardview_light_background"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="50% off on your first order"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="See restaurant"
+            android:backgroundTint="@color/orange" />
+
+    </LinearLayout>
+
+    <!-- Barra de búsqueda -->
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Search for restaurants or food"
+        android:drawablePadding="8dp"
+        android:padding="16dp"
+        android:background="@drawable/common_google_signin_btn_icon_dark_normal_background" />
+
+    <!-- Categorías -->
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                style="@style/Widget.AppCompat.Button.Small"
+                android:text="Fast Food" />
+
+            <Button
+                style="@style/Widget.AppCompat.Button.Small"
+                android:text="Lunch &amp; Others" />
+
+            <Button
+                style="@style/Widget.AppCompat.Button"
+                android:text="Coffee Shops" />
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <!-- Restaurantes destacados -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Featured Restaurants"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:padding="16dp" />
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <include layout="@layout/activity_sign_in" />
+            <!-- Agrega más instancias de restaurant_item_layout según sea necesario -->
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <!-- Barra de navegación -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/orange">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/common_google_signin_btn_text_light_normal"
+            android:text="Home" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/button_bg"
+            android:text="Map" />
+
+    </LinearLayout>
+
+</LinearLayout>
