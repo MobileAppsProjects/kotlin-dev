@@ -17,14 +17,14 @@ class LogOutActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_logout)
+     //   setContentView(R.layout.activity_logout)
 
         firebaseAuth = FirebaseAuth.getInstance()
 
         // Configurar un clic de listener para el botón de cierre de sesión
-        findViewById<View>(R.id.logoutButton).setOnClickListener {
-            logoutUser()
-        }
+      //  findViewById<View>(R.id.logoutButton).setOnClickListener {
+      //      logoutUser()
+       // }
     }
 
     private fun logoutUser() {

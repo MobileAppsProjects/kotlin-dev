@@ -57,11 +57,5 @@
             android:name=".RestaurantMenuActivity"
             android:screenOrientation="portrait"
             android:exported="true" />
-
-        <!-- LogOutActivity -->
-        <activity
-            android:name=".LogOutActivity"
-            android:screenOrientation="portrait"
-            android:exported="true" />
     </application>
 </manifest>
