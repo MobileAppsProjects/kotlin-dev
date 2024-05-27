@@ -20,7 +20,6 @@ import java.io.*
 class MainActivity : AppCompatActivity(), RestaurantListAdapter.RestaurantListClickListener {
 
     private lateinit var networkService: NetworkService
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
