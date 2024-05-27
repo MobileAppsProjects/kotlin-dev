@@ -23,27 +23,30 @@ class MainActivity : AppCompatActivity(), RestaurantListAdapter.RestaurantListCl
         networkService = NetworkService(this)
 
         val actionBar: ActionBar? = supportActionBar
-        actionBar?.setTitle("Restaurant List")
+        actionBar?.title = "Restaurant List"
 
-        val restaurantModel = getRestaurantData()
-        initRecyclerView(restaurantModel)
+        // Verificar el estado de la red de manera asíncrona
+        networkService.checkNetworkStatusAsync { isConnected ->
+            if (isConnected) {
+                val restaurantModel = getRestaurantData(true)
+                initRecyclerView(restaurantModel)
+            } else {
+                val restaurantModel = getRestaurantData(false)
+                initRecyclerView(restaurantModel)
+                Toast.makeText(this, "No internet connection", Toast.LENGTH_SHORT).show()
+            }
+        }
 
         // Monitorear cambios en la conectividad
         networkService.registerNetworkReceiver { isConnected ->
             if (isConnected) {
-                val restaurantModel = getRestaurantData()
+                val restaurantModel = getRestaurantData(true)
                 initRecyclerView(restaurantModel)
             } else {
                 Toast.makeText(this, "Connection lost", Toast.LENGTH_SHORT).show()
             }
         }
     }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        networkService.unregisterNetworkReceiver()
-    }
-
 
     private fun initRecyclerView(restaurantList: List<RestaurantModel?>?) {
         val recyclerViewRestaurant = findViewById<RecyclerView>(R.id.recyclerViewRestaurant)
@@ -52,11 +55,10 @@ class MainActivity : AppCompatActivity(), RestaurantListAdapter.RestaurantListCl
         recyclerViewRestaurant.adapter = adapter
     }
 
-    private fun getRestaurantData(): List<RestaurantModel?>? {
+    private fun getRestaurantData(fetchFromNetwork: Boolean): List<RestaurantModel?>? {
         val jsonStr: String?
 
-        // Si hay conexión, leer datos de la red y guardarlos en caché
-        if (networkService.isConnected()) {
+        if (fetchFromNetwork) {
             val inputStream: InputStream = resources.openRawResource(R.raw.restaurant)
             val writer: Writer = StringWriter()
             val buffer = CharArray(1024)
@@ -70,24 +72,15 @@ class MainActivity : AppCompatActivity(), RestaurantListAdapter.RestaurantListCl
                 e.printStackTrace()
             }
             jsonStr = writer.toString()
-            saveDataToCache(jsonStr) // Guardar datos en caché
+            saveDataToCache(jsonStr)
         } else {
-            // Si no hay conexión, leer datos de la caché
             jsonStr = readDataFromCache() ?: return null
-            Toast.makeText(this, "No internet connection. Loaded from cache.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Loaded from cache", Toast.LENGTH_SHORT).show()
         }
 
         val gson = Gson()
         return gson.fromJson<Array<RestaurantModel>>(jsonStr, Array<RestaurantModel>::class.java).toList()
     }
-
-
-    override fun onItemClick(restaurantModel: RestaurantModel) {
-        val intent = Intent(this@MainActivity, RestaurantMenuActivity::class.java)
-        intent.putExtra("RestaurantModel", restaurantModel)
-        startActivity(intent)
-    }
-
 
     private fun saveDataToCache(data: String) {
         try {
@@ -116,4 +109,14 @@ class MainActivity : AppCompatActivity(), RestaurantListAdapter.RestaurantListCl
         }
     }
 
+    override fun onItemClick(restaurantModel: RestaurantModel) {
+        val intent = Intent(this@MainActivity, RestaurantMenuActivity::class.java)
+        intent.putExtra("RestaurantModel", restaurantModel)
+        startActivity(intent)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        networkService.unregisterNetworkReceiver()
+    }
 }

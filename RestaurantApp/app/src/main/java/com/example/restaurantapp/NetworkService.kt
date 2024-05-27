@@ -6,6 +6,8 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
+import android.os.Handler
+import android.os.Looper
 
 class NetworkService(private val context: Context) {
     private var networkReceiver: NetworkReceiver? = null
@@ -26,6 +28,13 @@ class NetworkService(private val context: Context) {
     fun unregisterNetworkReceiver() {
         networkReceiver?.let {
             context.unregisterReceiver(it)
+        }
+    }
+
+    fun checkNetworkStatusAsync(onResult: (Boolean) -> Unit) {
+        val handler = Handler(Looper.getMainLooper())
+        handler.post {
+            onResult(isConnected())
         }
     }
 
