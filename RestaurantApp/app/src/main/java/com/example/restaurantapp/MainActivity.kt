@@ -21,7 +21,6 @@ class MainActivity : AppCompatActivity(), RestaurantListAdapter.RestaurantListCl
         setContentView(R.layout.activity_main)
 
         networkService = NetworkService(this)
-
         val actionBar: ActionBar? = supportActionBar
         actionBar?.title = "Restaurant List"
 
