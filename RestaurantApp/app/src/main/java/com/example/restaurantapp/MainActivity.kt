@@ -45,7 +45,6 @@ class MainActivity : AppCompatActivity(), RestaurantListAdapter.RestaurantListCl
             }
         }
     }
-
     private fun fetchRestaurantData(fetchFromNetwork: Boolean) {
         lifecycleScope.launch {
             val restaurantModel = withContext(Dispatchers.IO) {
@@ -54,7 +53,6 @@ class MainActivity : AppCompatActivity(), RestaurantListAdapter.RestaurantListCl
             initRecyclerView(restaurantModel)
         }
     }
-
     private fun getRestaurantData(fetchFromNetwork: Boolean): List<RestaurantModel?>? {
         val jsonStr: String?
 
