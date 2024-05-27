@@ -23,9 +23,7 @@ class MainActivity : AppCompatActivity(), RestaurantListAdapter.RestaurantListCl
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         networkService = NetworkService(this)
-
         val actionBar: ActionBar? = supportActionBar
         actionBar?.title = "Restaurant List"
 
