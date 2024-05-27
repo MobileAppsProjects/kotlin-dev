@@ -5,12 +5,17 @@
       <config />
     </shared>
     <layouts>
-      <layout url="file://$PROJECT_DIR$/RestaurantApp/app/src/main/res/layout/activity_home.xml">
+      <layout url="file://$PROJECT_DIR$/RestaurantApp/app/src/main/res/layout/activity_restaurant_menu.xml">
         <config>
           <theme>@style/Theme.LoginAndSignUp</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/RestaurantApp/app/src/main/res/layout/activity_restaurant_menu.xml">
+      <layout url="file://$PROJECT_DIR$/RestaurantApp/app/src/main/res/layout/map_fragment.xml">
+        <config>
+          <theme>@style/Theme.LoginAndSignUp</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/RestaurantApp/app/src/main/res/layout/menu_list_row.xml">
         <config>
           <theme>@style/Theme.LoginAndSignUp</theme>
         </config>
@@ -21,7 +26,12 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f3ed986-dcec-4b23-88a0-9ca64fed6213" name="Changes" comment="Changes2" />
+    <list default="true" id="6f3ed986-dcec-4b23-88a0-9ca64fed6213" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RestaurantApp/app/src/main/java/com/example/restaurantapp/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/RestaurantApp/app/src/main/java/com/example/restaurantapp/MainActivity.kt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -39,6 +49,12 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
+        <task path="$PROJECT_DIR$/RestaurantApp/app">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/kotlin-dev-386b275244a61131733f8bca1e03c94dd43dcc05/RestaurantApp/app">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
             <expand />
@@ -51,9 +67,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="layoutResourceFile" />
         <option value="Class" />
         <option value="Kotlin Class" />
+        <option value="layoutResourceFile" />
       </list>
     </option>
   </component>
@@ -62,6 +78,9 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -83,14 +102,15 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "develop",
+    "git-widget-placeholder": "tales",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/user/AndroidStudioProjects/kotlin-dev/RestaurantApp"
+    "last_opened_file_path": "C:/Users/user/AndroidStudioProjects/kotlin-dev/RestaurantApp/app/src/main/java/com/example/restaurantapp"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\user\AndroidStudioProjects\kotlin-dev\RestaurantApp\app\src\main\java\com\example\restaurantapp" />
       <recent name="C:\Users\user\AndroidStudioProjects\kotlin-dev\RestaurantApp\app\src\main\java\com\example\restaurantapp\ui" />
     </key>
   </component>
@@ -171,9 +191,5 @@
       <updated>1716695222812</updated>
     </task>
     <servers />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="Changes2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes2" />
   </component>
 </project>

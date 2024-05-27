@@ -21,21 +21,24 @@ class MainActivity : AppCompatActivity(), RestaurantListAdapter.RestaurantListCl
         setContentView(R.layout.activity_main)
 
         networkService = NetworkService(this)
-
         val actionBar: ActionBar? = supportActionBar
-        actionBar?.setTitle("Restaurant List")
+        actionBar?.title = "Restaurant List"
 
-        if (networkService.isConnected()) {
-            val restaurantModel = getRestaurantData()
-            initRecyclerView(restaurantModel)
-        } else {
-            Toast.makeText(this, "No internet connection", Toast.LENGTH_SHORT).show()
+        // Verificar el estado de la red de manera asíncrona
+        networkService.checkNetworkStatusAsync { isConnected ->
+            if (isConnected) {
+                val restaurantModel = getRestaurantData(true)
+                initRecyclerView(restaurantModel)
+            } else {
+                val restaurantModel = getRestaurantData(false)
+                initRecyclerView(restaurantModel)
+                Toast.makeText(this, "No internet connection", Toast.LENGTH_SHORT).show()
+            }
         }
-
         // Monitorear cambios en la conectividad
         networkService.registerNetworkReceiver { isConnected ->
             if (isConnected) {
-                val restaurantModel = getRestaurantData()
+                val restaurantModel = getRestaurantData(true)
                 initRecyclerView(restaurantModel)
             } else {
                 Toast.makeText(this, "Connection lost", Toast.LENGTH_SHORT).show()
@@ -50,22 +53,58 @@ class MainActivity : AppCompatActivity(), RestaurantListAdapter.RestaurantListCl
         recyclerViewRestaurant.adapter = adapter
     }
 
-    private fun getRestaurantData(): List<RestaurantModel?>? {
-        val inputStream: InputStream = resources.openRawResource(R.raw.restaurant)
-        val writer: Writer = StringWriter()
-        val buffer = CharArray(1024)
-        try {
-            val reader: Reader = BufferedReader(InputStreamReader(inputStream, "UTF-8"))
-            var n: Int
-            while (reader.read(buffer).also { n = it } != -1) {
-                writer.write(buffer, 0, n)
+    private fun getRestaurantData(fetchFromNetwork: Boolean): List<RestaurantModel?>? {
+        val jsonStr: String?
+
+        if (fetchFromNetwork) {
+            val inputStream: InputStream = resources.openRawResource(R.raw.restaurant)
+            val writer: Writer = StringWriter()
+            val buffer = CharArray(1024)
+            try {
+                val reader: Reader = BufferedReader(InputStreamReader(inputStream, "UTF-8"))
+                var n: Int
+                while (reader.read(buffer).also { n = it } != -1) {
+                    writer.write(buffer, 0, n)
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
             }
-        } catch (e: Exception) {
+            jsonStr = writer.toString()
+            saveDataToCache(jsonStr)
+        } else {
+            jsonStr = readDataFromCache() ?: return null
+            Toast.makeText(this, "Loaded from cache", Toast.LENGTH_SHORT).show()
         }
-        val jsonStr: String = writer.toString()
+
         val gson = Gson()
-        val restaurantModel = gson.fromJson<Array<RestaurantModel>>(jsonStr, Array<RestaurantModel>::class.java).toList()
-        return restaurantModel
+        return gson.fromJson<Array<RestaurantModel>>(jsonStr, Array<RestaurantModel>::class.java).toList()
+    }
+
+    private fun saveDataToCache(data: String) {
+        try {
+            val file = File(cacheDir, "restaurant_cache.json")
+            val writer = BufferedWriter(FileWriter(file))
+            writer.use {
+                it.write(data)
+            }
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+    }
+
+    private fun readDataFromCache(): String? {
+        return try {
+            val file = File(cacheDir, "restaurant_cache.json")
+            val reader = BufferedReader(FileReader(file))
+            val stringBuilder = StringBuilder()
+            reader.useLines { lines ->
+                lines.forEach { stringBuilder.append(it) }
+            }
+            stringBuilder.toString()
+        } catch (e: IOException) {
+            e.printStackTrace()
+            null
+        }
     }
 
     override fun onItemClick(restaurantModel: RestaurantModel) {
