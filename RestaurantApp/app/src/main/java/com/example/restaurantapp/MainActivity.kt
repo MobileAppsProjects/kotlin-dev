@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.restaurantapp.NetworkService
 import com.example.restaurantapp.R
 import com.example.restaurantapp.RestaurantMenuActivity
-import com.example.restaurantapp.adapter.RestaurantListAdapter
 import com.example.restaurantapp.models.RestaurantModel
+import com.example.restaurantapp.adapter.RestaurantListAdapter
 import com.google.gson.Gson
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

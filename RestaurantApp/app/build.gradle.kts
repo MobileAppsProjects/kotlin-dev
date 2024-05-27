@@ -77,4 +77,5 @@ dependencies {
     implementation ("com.google.code.gson:gson:2.10.1")
     implementation ("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation ("com.github.bumptech.glide:compiler:4.12.0")
+    implementation ("com.google.android.gms:play-services-maps:18.1.0")
 }
