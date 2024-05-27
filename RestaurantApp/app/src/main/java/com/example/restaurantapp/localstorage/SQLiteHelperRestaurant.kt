@@ -1,11 +1,13 @@
 package com.example.restaurantapp.localstorage
 
 import Menu
+import Restaurant
 import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 
 class SQLiteHelperRestaurant(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, 1) {
 
@@ -63,5 +65,25 @@ class SQLiteHelperRestaurant(context: Context) : SQLiteOpenHelper(context, DATAB
         }
         db.insert(TABLE_NAME_MENUS, null, values)
         db.close()
+    }
+
+    fun parseJsonAndSaveRestaurant(jsonString: String, context: Context) {
+        val gson = Gson()
+        val type = object : TypeToken<Restaurant>() {}.type
+        val restaurant: Restaurant = gson.fromJson(jsonString, type)
+
+        val sqliteHelper = SQLiteHelperRestaurant(context)
+        val restaurantId = sqliteHelper.insertRestaurant(
+            restaurant.name,
+            restaurant.address,
+            restaurant.deliveryCharge,
+            restaurant.hours
+        )
+
+        val menuType = object : TypeToken<List<Menu>>() {}.type
+        val menus: List<Menu> = gson.fromJson(jsonString.substringAfter("\"menus\":[").substringBefore("]"), menuType)
+        for (menu in menus) {
+            sqliteHelper.insertMenu(restaurantId, menu)
+        }
     }
 }
