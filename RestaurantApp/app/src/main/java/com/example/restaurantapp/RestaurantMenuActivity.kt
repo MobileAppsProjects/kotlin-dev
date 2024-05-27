@@ -7,14 +7,15 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.restaurantapp.adapter.MenuListAdapter
 import com.example.restaurantapp.databinding.ActivityRestaurantMenuBinding
 import com.example.restaurantapp.models.Menus
 import com.example.restaurantapp.models.RestaurantModel
+import com.example.restaurantapp.adapter.MenuListAdapter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+
 
 class RestaurantMenuActivity : AppCompatActivity(), MenuListAdapter.MenuListClickListener {
 
