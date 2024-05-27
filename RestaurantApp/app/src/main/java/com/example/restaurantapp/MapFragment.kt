@@ -26,7 +26,7 @@ class MapFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_map, container, false)
+        return inflater.inflate(R.layout.map_fragment, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -35,4 +35,4 @@ class MapFragment : Fragment() {
         mapFragment?.getMapAsync(callback)
     }
 }
-*/
+/*
