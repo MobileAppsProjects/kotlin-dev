@@ -1,3 +1,4 @@
+/*
 package com.example.restaurantapp
 
 import android.os.Bundle
@@ -34,3 +35,4 @@ class MapFragment : Fragment() {
         mapFragment?.getMapAsync(callback)
     }
 }
+*/
