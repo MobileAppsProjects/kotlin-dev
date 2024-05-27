@@ -27,10 +27,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6f3ed986-dcec-4b23-88a0-9ca64fed6213" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RestaurantApp/app/src/main/java/com/example/restaurantapp/Localstorage/Restaurant.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RestaurantApp/app/src/main/java/com/example/restaurantapp/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/RestaurantApp/app/src/main/java/com/example/restaurantapp/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RestaurantApp/app/src/main/java/com/example/restaurantapp/RestaurantMenuActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/RestaurantApp/app/src/main/java/com/example/restaurantapp/RestaurantMenuActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RestaurantApp/app/src/main/java/com/example/restaurantapp/adapter/RestaurantListAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/RestaurantApp/app/src/main/java/com/example/restaurantapp/adapter/RestaurantListAdapter.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,9 +118,10 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "63-micro-optimization-cache",
+    "git-widget-placeholder": "71-create-data-class-for-restaurant",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/user/AndroidStudioProjects/kotlin-dev/RestaurantApp/app/src/main/java/com/example/restaurantapp"
@@ -197,9 +197,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
       <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
-      <method v="2">
-        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-      </method>
+      <method v="2" />
     </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
