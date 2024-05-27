@@ -7,8 +7,8 @@ import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.restaurantapp.adapter.RestaurantListAdapter
 import com.example.restaurantapp.models.RestaurantModel
+import com.example.restaurantapp.adapter.RestaurantListAdapter
 import com.google.gson.Gson
 import java.io.*
 

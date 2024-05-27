@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.restaurantapp.R
 import com.example.restaurantapp.models.Hours
 import com.example.restaurantapp.models.RestaurantModel
@@ -53,6 +54,7 @@ class RestaurantListAdapter(val restaurantList: List<RestaurantModel?>?, val cli
 
             Glide.with(thumbImage)
                 .load(restaurantModel?.image)
+                .diskCacheStrategy(DiskCacheStrategy.ALL) // Cachea todas las versiones de la imagen
                 .into(thumbImage)
         }
     }
