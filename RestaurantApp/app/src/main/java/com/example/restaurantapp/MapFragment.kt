@@ -35,4 +35,4 @@ class MapFragment : Fragment() {
         mapFragment?.getMapAsync(callback)
     }
 }
-/*
+*/
