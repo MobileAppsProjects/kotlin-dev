@@ -35,7 +35,6 @@ class MainActivity : AppCompatActivity(), RestaurantListAdapter.RestaurantListCl
                 Toast.makeText(this, "No internet connection", Toast.LENGTH_SHORT).show()
             }
         }
-
         // Monitorear cambios en la conectividad
         networkService.registerNetworkReceiver { isConnected ->
             if (isConnected) {
